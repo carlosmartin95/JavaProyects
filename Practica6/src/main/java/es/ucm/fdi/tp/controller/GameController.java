@@ -1,0 +1,29 @@
+package es.ucm.fdi.tp.controller;
+
+import es.ucm.fdi.tp.base.model.GameAction;
+import es.ucm.fdi.tp.base.model.GameState;
+import es.ucm.fdi.tp.mvc.GameEvent;
+
+
+
+public interface GameController<S extends GameState<S,A>,A extends GameAction<S,A>> {
+	
+	public enum  PlayerMode {MANUAL ,RANDOM,SMART};
+	public void makeManualMove(A a);
+	public void makeRandomMove();
+	public void makeSmartMove();
+	public void restartGame();
+	public void stopGame();
+	public void changePlayerMode(PlayerMode p);
+	public void handleEvent(GameEvent<S,A> e);
+	public PlayerMode getPlayerMode();
+	public int getPlayerId();
+	public S getState();
+	public void update(S state);
+	public int getWinner();
+	public int getHilos();
+	public void setHilos(int hilos);
+	public int getMilis();
+	public void setMilis(int milis);
+	public void stopThread();
+}
